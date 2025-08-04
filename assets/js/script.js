@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('submitForm function available:', typeof window.submitForm);
 });
 
-// Netlify form submission handling
+// Formspree form submission handling
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
     if (form) {
@@ -222,9 +222,8 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
             
-            // Let Netlify handle the submission naturally
-            // Don't prevent default - let it submit to Netlify
-            console.log('Form submitted to Netlify');
+            // Let Formspree handle the submission
+            console.log('Form submitted to Formspree');
             
             // After form submits, redirect to success page
             setTimeout(() => {
