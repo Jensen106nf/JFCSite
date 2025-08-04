@@ -212,8 +212,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (newContactForm) {
         newContactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
             const submitButton = this.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
             
@@ -221,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
             
-            // Simulate form submission (Netlify will handle the actual submission)
+            // Let Netlify handle the submission, then show success screen
             setTimeout(() => {
                 // Hide form and show success screen
                 this.style.display = 'none';
@@ -233,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Scroll to success screen
                 successScreen.scrollIntoView({ behavior: 'smooth' });
-            }, 2000);
+            }, 1500);
         });
     }
     
