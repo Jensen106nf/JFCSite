@@ -129,17 +129,18 @@ body {
 }
 
 .btn-hero {
-    padding: var(--spacing-lg) var(--spacing-2xl);
-    font-size: var(--font-size-lg);
-    min-width: 200px;
+    padding: var(--spacing-base) var(--spacing-xl);
+    font-size: var(--font-size-base);
+    min-width: 160px;
     font-weight: 600;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-md);
     transition: all 0.3s ease;
+    border-radius: var(--radius-lg);
 }
 
 .btn-hero:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-high);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
 }
 
 /* Icon Styles */
