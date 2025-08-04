@@ -208,9 +208,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Simple mailto form submission
     window.submitForm = function(event) {
+        console.log('Form submission started');
         event.preventDefault();
         
         const form = document.getElementById('contactForm');
+        if (!form) {
+            console.error('Form not found');
+            return false;
+        }
+        
         const formData = new FormData(form);
         
         // Get form values
@@ -227,6 +233,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Get selected services
         const services = formData.getAll('services');
         const servicesList = services.length > 0 ? services.join(', ') : 'None selected';
+        
+        console.log('Form data collected:', { firstName, lastName, email, phone, servicesList });
         
         // Create email body
         const emailBody = `
@@ -248,6 +256,8 @@ This request was submitted through the Jensen Floorcare website.
         // Create mailto link
         const mailtoLink = `mailto:brianjensen9@gmail.com?subject=New Service Request - ${firstName} ${lastName}&body=${encodeURIComponent(emailBody)}`;
         
+        console.log('Opening mailto link:', mailtoLink);
+        
         // Open email client
         window.open(mailtoLink);
         
@@ -257,6 +267,7 @@ This request was submitted through the Jensen Floorcare website.
         // Reset form
         form.reset();
         
+        console.log('Form submission completed');
         return false;
     };
     
@@ -264,6 +275,7 @@ This request was submitted through the Jensen Floorcare website.
 
     // Initialize any third-party integrations
     console.log('Jensen Floorcare website loaded successfully');
+    console.log('submitForm function available:', typeof window.submitForm);
 });
 
 // Utility functions
