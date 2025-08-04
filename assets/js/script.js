@@ -208,10 +208,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Contact form functionality for Netlify Forms
     const newContactForm = document.getElementById('contactForm');
+    const successScreen = document.getElementById('successScreen');
+    
     if (newContactForm) {
         newContactForm.addEventListener('submit', function(e) {
-            // Let Netlify handle the form submission
-            // We'll add a loading state and success handling
+            e.preventDefault();
             
             const submitButton = this.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
@@ -220,13 +221,37 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
             
-            // Reset button after form submission (Netlify will handle the redirect)
+            // Simulate form submission (Netlify will handle the actual submission)
             setTimeout(() => {
+                // Hide form and show success screen
+                this.style.display = 'none';
+                successScreen.style.display = 'block';
+                
+                // Reset button
                 submitButton.textContent = originalText;
                 submitButton.disabled = false;
-            }, 3000);
+                
+                // Scroll to success screen
+                successScreen.scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
         });
     }
+    
+    // Function to reset form (called from success screen)
+    window.resetForm = function() {
+        const form = document.getElementById('contactForm');
+        const successScreen = document.getElementById('successScreen');
+        
+        // Reset form
+        form.reset();
+        
+        // Show form and hide success screen
+        form.style.display = 'block';
+        successScreen.style.display = 'none';
+        
+        // Scroll to form
+        form.scrollIntoView({ behavior: 'smooth' });
+    };
 
     // Initialize any third-party integrations
     console.log('Jensen Floorcare website loaded successfully');
