@@ -204,40 +204,43 @@ document.addEventListener('DOMContentLoaded', function() {
         progressBar.style.width = scrollPercent + '%';
     });
 
+    // Initialize any third-party integrations
+    console.log('Jensen Floorcare website loaded successfully');
+    console.log('submitForm function available:', typeof window.submitForm);
+});
 
+// Simple mailto form submission - moved outside DOMContentLoaded for global access
+window.submitForm = function(event) {
+    console.log('Form submission started');
+    event.preventDefault();
     
-    // Simple mailto form submission
-    window.submitForm = function(event) {
-        console.log('Form submission started');
-        event.preventDefault();
-        
-        const form = document.getElementById('contactForm');
-        if (!form) {
-            console.error('Form not found');
-            return false;
-        }
-        
-        const formData = new FormData(form);
-        
-        // Get form values
-        const firstName = formData.get('firstName') || '';
-        const lastName = formData.get('lastName') || '';
-        const email = formData.get('email') || '';
-        const phone = formData.get('phone') || '';
-        const address = formData.get('address') || '';
-        const city = formData.get('city') || '';
-        const state = formData.get('state') || '';
-        const zip = formData.get('zip') || '';
-        const additionalInfo = formData.get('additionalInfo') || '';
-        
-        // Get selected services
-        const services = formData.getAll('services');
-        const servicesList = services.length > 0 ? services.join(', ') : 'None selected';
-        
-        console.log('Form data collected:', { firstName, lastName, email, phone, servicesList });
-        
-        // Create email body
-        const emailBody = `
+    const form = document.getElementById('contactForm');
+    if (!form) {
+        console.error('Form not found');
+        return false;
+    }
+    
+    const formData = new FormData(form);
+    
+    // Get form values
+    const firstName = formData.get('firstName') || '';
+    const lastName = formData.get('lastName') || '';
+    const email = formData.get('email') || '';
+    const phone = formData.get('phone') || '';
+    const address = formData.get('address') || '';
+    const city = formData.get('city') || '';
+    const state = formData.get('state') || '';
+    const zip = formData.get('zip') || '';
+    const additionalInfo = formData.get('additionalInfo') || '';
+    
+    // Get selected services
+    const services = formData.getAll('services');
+    const servicesList = services.length > 0 ? services.join(', ') : 'None selected';
+    
+    console.log('Form data collected:', { firstName, lastName, email, phone, servicesList });
+    
+    // Create email body
+    const emailBody = `
 New Service Request from Jensen Floorcare Website
 
 Name: ${firstName} ${lastName}
@@ -251,32 +254,25 @@ Additional Information: ${additionalInfo}
 
 ---
 This request was submitted through the Jensen Floorcare website.
-        `.trim();
-        
-        // Create mailto link
-        const mailtoLink = `mailto:brianjensen9@gmail.com?subject=New Service Request - ${firstName} ${lastName}&body=${encodeURIComponent(emailBody)}`;
-        
-        console.log('Opening mailto link:', mailtoLink);
-        
-        // Open email client
-        window.open(mailtoLink);
-        
-        // Show success message
-        alert('Thank you for your request! Your email client should open with a pre-filled message. Please send the email to complete your request.');
-        
-        // Reset form
-        form.reset();
-        
-        console.log('Form submission completed');
-        return false;
-    };
+    `.trim();
     
-
-
-    // Initialize any third-party integrations
-    console.log('Jensen Floorcare website loaded successfully');
-    console.log('submitForm function available:', typeof window.submitForm);
-});
+    // Create mailto link
+    const mailtoLink = `mailto:brianjensen9@gmail.com?subject=New Service Request - ${firstName} ${lastName}&body=${encodeURIComponent(emailBody)}`;
+    
+    console.log('Opening mailto link:', mailtoLink);
+    
+    // Open email client
+    window.open(mailtoLink);
+    
+    // Show success message
+    alert('Thank you for your request! Your email client should open with a pre-filled message. Please send the email to complete your request.');
+    
+    // Reset form
+    form.reset();
+    
+    console.log('Form submission completed');
+    return false;
+};
 
 // Utility functions
 function debounce(func, wait) {
