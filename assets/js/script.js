@@ -225,11 +225,17 @@ document.addEventListener('DOMContentLoaded', function() {
             // Let Netlify handle the submission
             // The form will submit normally to Netlify
             console.log('Form submitted to Netlify');
+            
+            // Reset button after a delay (in case of error)
+            setTimeout(() => {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }, 5000);
         });
     }
 });
 
-// Success page redirect (optional)
+// Success page redirect
 window.addEventListener('load', function() {
     if (window.location.search.includes('success=true')) {
         alert('Thank you for your request! We will get back to you soon.');
