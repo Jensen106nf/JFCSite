@@ -206,9 +206,59 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     
-    // Netlify Forms will handle the submission automatically
-    // The form will redirect to a success page or show success message
-    // No JavaScript needed - Netlify handles everything!
+    // Simple mailto form submission
+    window.submitForm = function(event) {
+        event.preventDefault();
+        
+        const form = document.getElementById('contactForm');
+        const formData = new FormData(form);
+        
+        // Get form values
+        const firstName = formData.get('firstName') || '';
+        const lastName = formData.get('lastName') || '';
+        const email = formData.get('email') || '';
+        const phone = formData.get('phone') || '';
+        const address = formData.get('address') || '';
+        const city = formData.get('city') || '';
+        const state = formData.get('state') || '';
+        const zip = formData.get('zip') || '';
+        const additionalInfo = formData.get('additionalInfo') || '';
+        
+        // Get selected services
+        const services = formData.getAll('services');
+        const servicesList = services.length > 0 ? services.join(', ') : 'None selected';
+        
+        // Create email body
+        const emailBody = `
+New Service Request from Jensen Floorcare Website
+
+Name: ${firstName} ${lastName}
+Email: ${email}
+Phone: ${phone}
+Address: ${address}, ${city}, ${state} ${zip}
+
+Services Requested: ${servicesList}
+
+Additional Information: ${additionalInfo}
+
+---
+This request was submitted through the Jensen Floorcare website.
+        `.trim();
+        
+        // Create mailto link
+        const mailtoLink = `mailto:brianjensen9@gmail.com?subject=New Service Request - ${firstName} ${lastName}&body=${encodeURIComponent(emailBody)}`;
+        
+        // Open email client
+        window.open(mailtoLink);
+        
+        // Show success message
+        alert('Thank you for your request! Your email client should open with a pre-filled message. Please send the email to complete your request.');
+        
+        // Reset form
+        form.reset();
+        
+        return false;
+    };
     
 
 
