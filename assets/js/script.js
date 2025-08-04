@@ -69,12 +69,12 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScrollTop = scrollTop;
     });
 
-    // Add loading states for buttons
+    // Add loading states for buttons (excluding form submit buttons)
     const buttons = document.querySelectorAll('.btn');
     buttons.forEach(button => {
         button.addEventListener('click', function(e) {
-            // Add loading state for primary buttons
-            if (this.classList.contains('btn-primary')) {
+            // Add loading state for primary buttons, but not submit buttons
+            if (this.classList.contains('btn-primary') && this.type !== 'submit') {
                 const originalText = this.textContent;
                 this.textContent = 'Loading...';
                 this.disabled = true;
@@ -209,20 +209,8 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('submitForm function available:', typeof window.submitForm);
 });
 
-// Netlify Forms handling
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contactForm');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            const submitButton = form.querySelector('button[type="submit"]');
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
-            
-            // Let Netlify handle the submission
-            // Form will submit to Netlify's endpoint
-        });
-    }
-});
+// Remove all form handling - let it submit naturally
+// No JavaScript interference with form submission
 
 // Success page handling
 window.addEventListener('load', function() {
