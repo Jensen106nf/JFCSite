@@ -222,13 +222,9 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
             
-            // Let Formspree handle the submission
+            // Let the form submit naturally to Formspree
+            // Don't prevent default or redirect immediately
             console.log('Form submitted to Formspree');
-            
-            // After form submits, redirect to success page
-            setTimeout(() => {
-                window.location.href = '/?success=true';
-            }, 2000);
         });
     }
 });
