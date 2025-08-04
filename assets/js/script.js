@@ -219,16 +219,9 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
             
-            // Store form data for Netlify
-            const formData = new FormData(this);
-            
-            // Submit to Netlify
-            fetch('/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(formData).toString()
-            })
-            .then(() => {
+            // Let Netlify handle the submission naturally
+            // The form will submit to Netlify and then show success screen
+            setTimeout(() => {
                 // Hide form and show success screen
                 this.style.display = 'none';
                 successScreen.style.display = 'block';
@@ -239,18 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Scroll to success screen
                 successScreen.scrollIntoView({ behavior: 'smooth' });
-            })
-            .catch(() => {
-                // If there's an error, still show success (Netlify might have processed it)
-                this.style.display = 'none';
-                successScreen.style.display = 'block';
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-                successScreen.scrollIntoView({ behavior: 'smooth' });
-            });
-            
-            // Prevent default form submission
-            e.preventDefault();
+            }, 1000);
         });
     }
     

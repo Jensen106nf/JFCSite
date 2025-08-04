@@ -83,6 +83,10 @@ body {
     border: 0;
 }
 
+.hidden {
+    display: none;
+}
+
 /* Button Styles */
 .btn {
     display: inline-flex;
