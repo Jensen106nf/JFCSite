@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title>
+</head>
+<body>
+    <form name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact" />
+        <p>
+            <label>First Name: <input type="text" name="firstName" required /></label>
+        </p>
+        <p>
+            <label>Last Name: <input type="text" name="lastName" required /></label>
+        </p>
+        <p>
+            <label>Email: <input type="email" name="email" required /></label>
+        </p>
+        <p>
+            <label>Phone: <input type="tel" name="phone" required /></label>
+        </p>
+        <p>
+            <label>Address: <input type="text" name="address" required /></label>
+        </p>
+        <p>
+            <label>City: <input type="text" name="city" required /></label>
+        </p>
+        <p>
+            <label>State: <input type="text" name="state" required /></label>
+        </p>
+        <p>
+            <label>ZIP Code: <input type="text" name="zip" required /></label>
+        </p>
+        <p>
+            <label>Services:</label><br>
+            <label><input type="checkbox" name="services" value="carpet-cleaning" /> Carpet Cleaning</label><br>
+            <label><input type="checkbox" name="services" value="upholstery-cleaning" /> Upholstery Cleaning</label><br>
+            <label><input type="checkbox" name="services" value="stain-removal" /> Stain & Spot Removal</label><br>
+            <label><input type="checkbox" name="services" value="odor-removal" /> Odor Removal & Mitigation</label><br>
+            <label><input type="checkbox" name="services" value="hot-water-extraction" /> Hot Water Extraction</label><br>
+            <label><input type="checkbox" name="services" value="strip-wax" /> Strip & Wax Tile</label>
+        </p>
+        <p>
+            <label>Additional Information: <textarea name="additionalInfo"></textarea></label>
+        </p>
+        <p>
+            <label>Photos: <input type="file" name="photoUpload" accept="image/*" multiple /></label>
+        </p>
+        <p>
+            <button type="submit">Send Request</button>
+        </p>
+    </form>
+</body>
+</html> 

@@ -357,7 +357,8 @@
                     <h2>Schedule Your Free Consultation</h2>
                 </div>
                 <div class="form-container">
-                    <form class="contact-form" id="contactForm" method="POST" action="https://formspree.io/f/xkgzqowr">
+                    <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" action="/?success=true">
+                        <input type="hidden" name="form-name" value="contact" />
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="firstName">First Name *</label>

@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('submitForm function available:', typeof window.submitForm);
 });
 
-// Simple form handling - no interference
+// Netlify Forms handling
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
     if (form) {
@@ -217,7 +217,17 @@ document.addEventListener('DOMContentLoaded', function() {
             const submitButton = form.querySelector('button[type="submit"]');
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
+            
+            // Let Netlify handle the submission
+            // Form will submit to Netlify's endpoint
         });
+    }
+});
+
+// Success page handling
+window.addEventListener('load', function() {
+    if (window.location.search.includes('success=true')) {
+        alert('Thank you for your request! We will get back to you soon.');
     }
 });
 
