@@ -222,15 +222,14 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
             
-            // Let Netlify handle the submission
-            // The form will submit normally to Netlify
+            // Let Netlify handle the submission naturally
+            // Don't prevent default - let it submit to Netlify
             console.log('Form submitted to Netlify');
             
-            // Reset button after a delay (in case of error)
+            // After form submits, redirect to success page
             setTimeout(() => {
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-            }, 5000);
+                window.location.href = '/?success=true';
+            }, 2000);
         });
     }
 });
