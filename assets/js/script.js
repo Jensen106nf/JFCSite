@@ -209,22 +209,14 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('submitForm function available:', typeof window.submitForm);
 });
 
-// Formspree form submission handling
+// Simple form handling - no interference
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
     if (form) {
         form.addEventListener('submit', function(e) {
-            console.log('Form submission started');
-            
-            // Show loading state
             const submitButton = form.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
-            
-            // Let the form submit naturally to Formspree
-            // Don't prevent default or redirect immediately
-            console.log('Form submitted to Formspree');
         });
     }
 });
