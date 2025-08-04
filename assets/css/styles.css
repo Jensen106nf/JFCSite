@@ -563,19 +563,20 @@ details[open] .arrow {
 }
 
 .service-item .checkmark {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     background: var(--color-success);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
 }
 
 .service-item .checkmark svg {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     fill: white;
 }
 
