@@ -125,9 +125,17 @@ body {
 }
 
 .btn-hero {
-    padding: var(--spacing-xs) var(--spacing-sm);
-    font-size: var(--font-size-xs);
-    min-width: 120px;
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    font-size: var(--font-size-lg);
+    min-width: 200px;
+    font-weight: 600;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+}
+
+.btn-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-high);
 }
 
 /* Icon Styles */
@@ -389,6 +397,12 @@ details[open] .arrow {
     
     .service-area {
         font-size: var(--font-size-base);
+    }
+    
+    .btn-hero {
+        padding: var(--spacing-base) var(--spacing-xl);
+        font-size: var(--font-size-base);
+        min-width: 180px;
     }
 }
 
